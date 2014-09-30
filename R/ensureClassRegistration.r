@@ -58,7 +58,7 @@ setGeneric(
 #' @template author
 #' @template references
 #' @export
-#' @import rapp.core.condition
+#' @import conditionr
 setMethod(
   f = "ensureClassRegistration", 
   signature = signature(

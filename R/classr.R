@@ -4,7 +4,8 @@
 #' @description
 #' This package features a central interface for which other
 #' packages can implement methods that facilitate the systematic
-#' creation of class instances.
+#' creation of class instances. Its main intention is to facilitate rapid
+#' prototyping.
 #' 
 #' @details 
 #' The core functions/methods of this package: 
