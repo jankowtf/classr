@@ -1,4 +1,4 @@
-context("createInstance-1")
+context("ensureClassRegistration")
 test_that("ensureClassRegistration", {
 
   expect_true(res <- ensureClassRegistration(cl = "TestClass"))
