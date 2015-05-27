@@ -1,17 +1,20 @@
-\dontrun{
-
+##------------------------------------------------------------------------------
 ## Default instance "body" //
-res <- createInstance(cl = "TestClass")
+##------------------------------------------------------------------------------
+
+res <- createInstance("TestClass")
 res
 
 ls(res)
 class(res)
 
+##------------------------------------------------------------------------------
 ## Explicit object as instance "body" //
-res <- createInstance(cl = "TestClass", obj = list(x = TRUE))
+##------------------------------------------------------------------------------
+
+res <- createInstance("TestClass", 
+  input = list(x = TRUE, y = list(x_1 = 1, x_2 = 2)))
 res 
 
 ## Strict //
-try(createInstance(cl = "TestClass", strict = TRUE))
-
-}
+try(createInstance("TestClass", strict = TRUE))
