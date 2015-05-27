@@ -1,14 +1,14 @@
 Package: classr
 Type: Package
-Title: Interfaces and functionality for creating class instances
-Version: 1.1.1
-Date: 2014-09-30 21:25:27
+Title: Class instances for rapid prototyping
+Version: 1.2
+Date: 2015-05-27 20:13:24
 Author: Janko Thyson [aut, cre]
 Maintainer: Janko Thyson <janko.thyson@gmail.com>
 Description: The main intention this package is to facilitate rapid prototyping
-        by providing a central interface for the creation of S3 classes that 
-        provide some degree of structure (based on environments) while also being 
-        flexible enough for rapid prototyping.
+         by providing central interfacees for the creation of S3 classes that
+         provide some degree of structure while also being flexible enough to
+         fit the needs of rapid prototyping.
 License: GPL (>= 2)
 Roxygen: list(wrap = FALSE)
 NeedsCompilation: no
