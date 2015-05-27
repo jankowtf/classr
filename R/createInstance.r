@@ -1,3 +1,24 @@
+.Internal <- R6Class(
+  classname = ".Internal",
+  portable = TRUE,
+  public = list(
+    data = new.env(parent = emptyenv()),
+    initialize = function(...) {
+      input <- list(...)
+      if (length(input)) {
+# print(input)        
+        if (is.null(names(input)) || any(names(input) == "")) {
+          input <- unlist(input, recursive = FALSE)
+        }
+        sapply(seq(along = input), function(ii) {
+          assign(names(input)[ii], input[[ii]], envir = self$data)
+        })
+      }
+      NULL
+    }
+  )
+)
+
 #' @title
 #' Create Class Instance
 #'
@@ -32,8 +53,10 @@ setGeneric(
   ),
   def = function(
     cl,
-    obj = new.env(parent = emptyenv()),
+    # obj = new.env(parent = emptyenv()),
+    obj = if (!r6) new.env(parent = emptyenv()) else .Internal$new(),
     strict = FALSE,
+    r6 = TRUE,
     ...
   ) {
     standardGeneric("createInstance")       
@@ -68,15 +91,17 @@ setMethod(
     cl,
     obj,
     strict,
+    r6,
     ...
   ) {
 
-  return(createInstance(
+  createInstance(
     cl = cl,
     obj = obj,
+    r6 = r6,
     strict = strict,
     ...
-  ))
+  )
     
   }
 )
@@ -110,6 +135,7 @@ setMethod(
     cl,
     obj,
     strict,
+    r6,
     ...
   ) {
 
@@ -119,8 +145,11 @@ setMethod(
          "/classr/createInstance> Not a class: ", cl))
     }
   }
+  if (class(obj) != ".Internal" && r6) {
+    obj <- .Internal$new(obj)
+  }
   class(obj) <- unique(c(cl, class(obj)))
-  return(obj)
+  obj
     
   }
 )
